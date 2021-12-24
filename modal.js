@@ -12,27 +12,27 @@ function editNav() {
   const modalBtn = document.querySelectorAll(".modal-btn");
   const formData = document.querySelectorAll(".formData");
   
-  const btnClose = document.querySelector(".close");  // selection de la partie span "close"
+  // selection de la partie span "close"
+  const btnClose = document.querySelector(".close");            
   
-  const txtValid = document.getElementById("success");          // selection du paragraphe "merci"
-  
+   // selection du paragraphe "merci"
+  const txtValid = document.getElementById("success");         
+   
+  // Sélection du formulaire
   const formContainer = document.querySelector(".formContainer"); 
-  const modalValid = document.querySelectorAll(".btn-submit");  // selection du bouton "submit"
-  
-  
+
+ 
+    
   
   
   // launch modal event
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
   
-  btnClose.addEventListener("click", closeModal);  // Evenement sur const btnClose qui appelle fonction closeModal
+  // Evenement sur const btnClose qui appelle fonction closeModal
+  btnClose.addEventListener("click", closeModal);  
   
+  // Evenement qui appelle la fonction validate
   formContainer.addEventListener("submit", validate)
-  
-  // modalValid.forEach((btn) => btn.addEventListener("click", txtValidAppear));
-  
-  // modalValid.forEach((btn) => btn.addEventListener("click", validate));
-  
   
   
   
@@ -41,17 +41,18 @@ function editNav() {
     modalbg.style.display = "block";
   }
   
+  // Fonction qui permet de cacher la modale derrière le reste en cas de validation
   function closeModal() {
-    modalbg.style.display = "none";       // fonction qui permet de cacher la modale derrière le reste
+    modalbg.style.display = "none";       
   }
   
+  // Fonction qui fait apparaitre le txt de validation
   function txtValidAppear() {
     formContainer.style.display = "none";
-    txtValid.style.display = "block";    // Fonction qui fait apparaitre le txt
-    console.log("testvalidappear")
+    txtValid.style.display = "block";    
   }
   
-  
+  // Fonction de vérification du formulaire
   
   function validate(event) {
     event.preventDefault()
@@ -87,40 +88,44 @@ function editNav() {
     villeValid.style.display = "none";
     acceptedValid.style.display = "none";
   
-    console.log("essai")
-    if (firstName.value.length <= 2){         // Verification Prenom
+    // Verification Prenom
+    if (firstName.value.length <= 2){               
       firstValid.style.display = "block";
       isValid = false;
     }
-  
-    if(lastName.value.length <= 2){                 // Verification Nom
+    
+    // Verification Nom
+    if(lastName.value.length <= 2){                 
       lastValid.style.display = "block";
       isValid = false;
     }
     
-  
-    if (date.value.length < 10){                // Verification Anniversaire
+    // Verification Anniversaire
+    if (date.value.length < 10){                    
       dateValid.style.display = "block";
       isValid = false;
     }
   
+    // Vérification email
     if(mail.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)=== null){        
       mailValid.style.display = "block";
       isValid = false;
     }
-  
-    if (tournoi.value < 1){                       // Verification Nombre tournois
+    
+    // Verification Nombre tournois
+    if (tournoi.value < 1){                       
       quantityValid.style.display = "block";
       isValid = false;
     }
-    console.log(ville)
-  
-    if(ville === null){                           // Verification Ville
+
+    // Verification Ville
+    if(ville === null){                           
       villeValid.style.display = "block";
       isValid = false;
     }
-  
-    if(accepted.checked === false){              // Verification Conditions d'utilisation
+
+    // Verification Conditions d'utilisation
+    if(accepted.checked === false){              
       acceptedValid.style.display = "block";
       isValid = false;
     }

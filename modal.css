@@ -336,6 +336,7 @@
     border: none;
   }
   
+  /* Icone croix pour fermer la modale */
   .valid{
     display: none;
   }
